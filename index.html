@@ -24,15 +24,24 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+
+    const team = players;
+    console.log(players, team);
     
     // You might think we can just do something like this:
-
+    team[3] = 'Lux';
+    
     // however what happens when we update that array?
+    console.log(team);
 
     // now here is the problem!
-
+    console.log(players);
     // oh no - we have edited the original array too!
-
+    /*
+    contradistinguished from strings, numbers, and booleans, 
+    when we update a reference, the original is also modified;
+    tl;dr : updating a reference, updates the original
+    */
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
