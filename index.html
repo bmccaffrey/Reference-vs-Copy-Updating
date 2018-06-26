@@ -10,15 +10,15 @@
     // start with strings, numbers and booleans
     let age = 100;
     let age2 = age;
-    console.log(age, age2);
+    // console.log(age, age2);
     age = 200;
-    console.log(age, age2);
+    // console.log(age, age2);
 
     let name = 'Bryan';
     let name2 = name;
-    console.log(name, name2);
+    // console.log(name, name2);
     name = 'Madison';
-    console.log(name, name2);
+    // console.log(name, name2);
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
@@ -26,32 +26,49 @@
     // and we want to make a copy of it.
 
     const team = players;
-    console.log(players, team);
+    // console.log(players, team);
     
     // You might think we can just do something like this:
-    team[3] = 'Lux';
+    // team[3] = 'Lux';
     
     // however what happens when we update that array?
-    console.log(team);
+    // console.log(team);
 
     // now here is the problem!
-    console.log(players);
+    // console.log(players);
     // oh no - we have edited the original array too!
+
     /*
     contradistinguished from strings, numbers, and booleans, 
     when we update a reference, the original is also modified;
     tl;dr : updating a reference, updates the original
     */
+    
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
 
     // one way
-
+    const team2 = players.slice();
+    console.log(team2);
+    team2[3] = 'Lux';
+    console.log(team2);
+    console.log(players);
     // or create a new array and concat the old one in
-
+    const team3 = [].concat(players);
+    team3[3] = 'Lux';
+    console.log(team3);
+    console.log(players);
     // or use the new ES6 Spread
+    const team4 = [...players];
+    team4[3] = 'Lux';
+    console.log(team4);
+    console.log(players);
 
+    const team5 = Array.from(players);
+    team5[3] = 'Lux';
+    console.log(team5);
+    console.log(players);
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
